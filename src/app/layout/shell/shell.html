@@ -1,0 +1,20 @@
+<div class="shell">
+  <main class="shell__content">
+    <router-outlet />
+  </main>
+
+  <nav class="shell__nav">
+    <div class="shell__nav-title">Signal Forms</div>
+    <ul class="shell__nav-list">
+      @for (step of steps; track step.path) {
+        <li>
+          <a
+            class="shell__nav-link"
+            [routerLink]="step.path"
+            routerLinkActive="shell__nav-link--active"
+          >{{ step.label }}</a>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>

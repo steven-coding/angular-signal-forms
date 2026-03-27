@@ -1,0 +1,42 @@
+<h1>{{title}}</h1>
+<p>We start with a reactive form</p>
+
+<h2>Form</h2>
+
+<form class="form" [formGroup]="taskForm">
+
+  <div class="field">
+    <label for="description">Description</label>
+    <input id="description" type="text" formControlName="description" />
+    @for (error of taskForm.controls.description.errors | keyvalue; track error.key) {
+      <span class="field-error">{{ error.key }}: {{ error.value | json }}</span>
+    }
+  </div>
+
+  <div class="field">
+    <label for="when">When</label>
+    <input id="when" type="date" formControlName="when" />
+    @for (error of taskForm.controls.when.errors | keyvalue; track error.key) {
+      <span class="field-error">{{ error.key }}: {{ error.value | json }}</span>
+    }
+  </div>
+
+  <div class="field">
+    <label for="amount">Amount</label>
+    <input id="amount" type="number" formControlName="amount" />
+    @for (error of taskForm.controls.amount.errors | keyvalue; track error.key) {
+      <span class="field-error">{{ error.key }}: {{ error.value | json }}</span>
+    }
+  </div>
+
+  <div class="field field--checkbox">
+    <input id="done" type="checkbox" formControlName="done" />
+    <label for="done">Done</label>
+  </div>
+
+</form>
+<h2>Form-State</h2>
+<pre class="debug">IsValid:  {{ taskForm.valid }}</pre>
+
+<h2>Form-Model</h2>
+<pre class="debug">{{ taskForm.value | json }}</pre>
